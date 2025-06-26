@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v0.1.5 (2025-06-26)
+
+### Bug Fixes
+
+- Add contents permission to release job in workflow
+  ([`966a45c`](https://github.com/charlabsdev/pylib_logging/commit/966a45c996688253a68fb323853a6587b9a35aad))
+
+- Move environment and permissions settings to the release job in the workflow
+  ([`3b010da`](https://github.com/charlabsdev/pylib_logging/commit/3b010da40ca13eef35617cf5c8c87b00dafda082))
+
+
 ## v0.1.4 (2025-06-26)
 
 
