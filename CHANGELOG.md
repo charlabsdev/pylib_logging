@@ -1,7 +1,20 @@
 # CHANGELOG
 
 
+## v0.1.8 (2025-06-26)
+
+### Bug Fixes
+
+- Resolve PyPI local version upload issue
+  ([`c990582`](https://github.com/charlabsdev/pylib_logging/commit/c9905824e4753eb18ea8dbbc06bd4efb56f2585e))
+
+
 ## v0.1.7 (2025-06-26)
+
+### Bug Fixes
+
+- Update versioning and dependencies in pyproject.toml; add _version.py for setuptools-scm
+  ([`6c5f677`](https://github.com/charlabsdev/pylib_logging/commit/6c5f677963292dfea6ac3ff23b40c86e865e181c))
 
 
 ## v0.1.6 (2025-06-26)
