@@ -1,7 +1,15 @@
 # CHANGELOG
 
 
+## v0.1.7 (2025-06-26)
+
+
 ## v0.1.6 (2025-06-26)
+
+### Bug Fixes
+
+- Add step to publish package distributions to PyPI in release workflow
+  ([`06d8d99`](https://github.com/charlabsdev/pylib_logging/commit/06d8d9980d70a9ef4bfd6ac7149c2730156922ac))
 
 
 ## v0.1.5 (2025-06-26)
