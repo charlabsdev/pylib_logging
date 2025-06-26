@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.1 (2025-06-26)
+
+### Bug Fixes
+
+- Update build-system requirements and add package data configuration
+  ([`57334a8`](https://github.com/charlabsdev/pylib_logging/commit/57334a8f41f051ec2e604ae5e80179d6f19ffea6))
+
+
 ## v0.1.0 (2025-06-26)
 
 ### Bug Fixes
