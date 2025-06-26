@@ -1,6 +1,9 @@
 # CHANGELOG
 
 
+## v0.1.6 (2025-06-26)
+
+
 ## v0.1.5 (2025-06-26)
 
 ### Bug Fixes
@@ -10,6 +13,9 @@
 
 - Move environment and permissions settings to the release job in the workflow
   ([`3b010da`](https://github.com/charlabsdev/pylib_logging/commit/3b010da40ca13eef35617cf5c8c87b00dafda082))
+
+- Update PYPI_TOKEN secret reference in release workflow
+  ([`9952b59`](https://github.com/charlabsdev/pylib_logging/commit/9952b595f8c1c3ebdd259f96c34ca9f3f2123d5f))
 
 
 ## v0.1.4 (2025-06-26)
