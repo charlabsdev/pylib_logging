@@ -1,7 +1,28 @@
 # CHANGELOG
 
 
+## v0.2.0 (2025-06-26)
+
+
 ## v0.1.8 (2025-06-26)
+
+### Bug Fixes
+
+- Resolve PyPI local version upload issue
+  ([`c990582`](https://github.com/charlabsdev/pylib_logging/commit/c9905824e4753eb18ea8dbbc06bd4efb56f2585e))
+
+- Revert version number to 0.1.7 in __init__.py
+  ([`35af81f`](https://github.com/charlabsdev/pylib_logging/commit/35af81fccd5bea173d677552db567c8a3a15e1dc))
+
+### Chores
+
+- Update uv.lock after version change
+  ([`7035cb8`](https://github.com/charlabsdev/pylib_logging/commit/7035cb8e4a1ddbcfb3e50031dfffcb339b8d7eea))
+
+### Features
+
+- Add test feature for version bump testing
+  ([`c53cae9`](https://github.com/charlabsdev/pylib_logging/commit/c53cae9da3b413f335d6495e039055155f6c70cd))
 
 
 ## v0.1.7 (2025-06-26)
