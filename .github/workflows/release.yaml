@@ -43,6 +43,7 @@ jobs:
       url: https://pypi.org/p/charlabs-logging
     permissions:
       id-token: write
+      contents: write
 
     steps:
       - name: Checkout repository
