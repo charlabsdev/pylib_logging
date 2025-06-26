@@ -1,6 +1,6 @@
 [project]
 name = "charlabs-logging"
-dynamic = ["version"]
+version = "0.1.8"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -25,7 +25,7 @@ structlog = [
 ]
 
 [build-system]
-requires = ["setuptools>=61", "setuptools-scm>=8"]
+requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
@@ -33,8 +33,6 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 "*" = ["py.typed"]
-
-[tool.setuptools_scm]
 
 [tool.ruff]
 include = ["src/**/*.py", "tests/**/*.py"]
@@ -69,7 +67,6 @@ addopts = "--cov=src --cov-fail-under=60"
 name = "cz_conventional_commits"
 tag_format = "$version"
 version_scheme = "pep440"
-version_provider = "pep621"
 update_changelog_on_bump = true
 
 [tool.semantic_release]
@@ -84,6 +81,10 @@ allow_zero_version = true
 repo_dir = "."
 no_git_verify = false
 tag_format = "v{version}"
+version_provider = "pep621"
+version_variables = [
+    "src/charlabs/logging/__init__.py:__version__",
+]
 
 [tool.semantic_release.publish]
 dist_glob_patterns = ["dist/*"]

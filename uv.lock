@@ -31,6 +31,7 @@ wheels = [
 
 [[package]]
 name = "charlabs-logging"
+version = "0.1.8"
 source = { editable = "." }
 dependencies = [
     { name = "pydantic-settings" },
