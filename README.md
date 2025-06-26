@@ -14,7 +14,7 @@ A comprehensive Python logging library that provides both traditional logging an
 ## Installation
 
 ```bash
-pip install charlabs-pylib-logging
+pip install charlabs-logging
 ```
 
 ### Optional Dependencies
@@ -23,13 +23,13 @@ For different logging backends, install the appropriate dependency groups:
 
 ```bash
 # For traditional logging with JSON output
-pip install charlabs-pylib-logging[logging]
+pip install charlabs-logging[logging]
 
 # For structured logging with structlog
-pip install charlabs-pylib-logging[structlog]
+pip install charlabs-logging[structlog]
 
 # For development with rich console output
-pip install charlabs-pylib-logging[dev]
+pip install charlabs-logging[dev]
 ```
 
 ## Quick Start
