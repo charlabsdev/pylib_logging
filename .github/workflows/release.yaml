@@ -9,6 +9,11 @@ jobs:
   code-quality:
     name: Code Quality Checks
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/charlabs-logging
+    permissions:
+      id-token: write
 
     steps:
       - name: Checkout repository
@@ -59,12 +64,9 @@ jobs:
         run: uv sync --all-groups
 
       - name: Create release
-        run: uv run semantic-release version
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish release
-        run: uv run semantic-release publish
+        run: |
+          uv run semantic-release --strict version
+          uv run semantic-release publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
