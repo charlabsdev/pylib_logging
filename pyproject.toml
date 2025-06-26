@@ -1,6 +1,6 @@
 [project]
 name = "charlabs-logging"
-version = "0.1.8"
+dynamic = ["version"]
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -33,6 +33,9 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 "*" = ["py.typed"]
+
+[tool.setuptools.dynamic]
+version = {attr = "charlabs.logging.__version__"}
 
 [tool.ruff]
 include = ["src/**/*.py", "tests/**/*.py"]
@@ -81,7 +84,7 @@ allow_zero_version = true
 repo_dir = "."
 no_git_verify = false
 tag_format = "v{version}"
-version_provider = "pep621"
+version_provider = "tag"
 version_variables = [
     "src/charlabs/logging/__init__.py:__version__",
 ]
