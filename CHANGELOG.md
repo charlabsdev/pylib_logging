@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.3 (2025-06-26)
+
+### Bug Fixes
+
+- Enable upload to PyPI in semantic release configuration
+  ([`bebebda`](https://github.com/charlabsdev/pylib_logging/commit/bebebda48e73333bee22a9e797483acd1acc3a69))
+
+
 ## v0.1.2 (2025-06-26)
 
 ### Bug Fixes
