@@ -1,12 +1,21 @@
 # CHANGELOG
 
 
+## v0.1.4 (2025-06-26)
+
+
 ## v0.1.3 (2025-06-26)
 
 ### Bug Fixes
 
 - Enable upload to PyPI in semantic release configuration
   ([`bebebda`](https://github.com/charlabsdev/pylib_logging/commit/bebebda48e73333bee22a9e797483acd1acc3a69))
+
+- Update package name from charlabs-pylib-logging to charlabs-logging in README and pyproject.toml
+  ([`f243b77`](https://github.com/charlabsdev/pylib_logging/commit/f243b77e0404e7e552c79b473dc048ff252898a5))
+
+- Update release workflow to use strict mode for semantic release and remove upload_to_pypi flag
+  ([`9f3c450`](https://github.com/charlabsdev/pylib_logging/commit/9f3c4504a299b29df7a1d3904baf4962bfdaf29a))
 
 
 ## v0.1.2 (2025-06-26)
