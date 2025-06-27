@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://charlabs.dev"><img src="./assets/logo_h.webp" alt="CharLabs" style="max-width: 450px; width: calc(100% - 48px);" /></a>
+    <a href="https://charlabs.dev"><img src="./assets/logo_h_bg.webp" alt="CharLabs" style="width: 100%;" /></a>
 </p>
 
 <h1 style="border: none;" align="center">CharLabs PyLib Logging</h1>
