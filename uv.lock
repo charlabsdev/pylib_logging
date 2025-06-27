@@ -34,6 +34,7 @@ name = "charlabs-logging"
 source = { editable = "." }
 dependencies = [
     { name = "pydantic-settings" },
+    { name = "pyyaml" },
 ]
 
 [package.dev-dependencies]
@@ -53,7 +54,10 @@ structlog = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pydantic-settings", specifier = ">=2.10.1" }]
+requires-dist = [
+    { name = "pydantic-settings", specifier = ">=2.10.1" },
+    { name = "pyyaml", specifier = ">=6.0.2" },
+]
 
 [package.metadata.requires-dev]
 dev = [
