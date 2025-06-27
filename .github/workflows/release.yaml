@@ -12,18 +12,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install uv package manager
-        uses: astral-sh/setup-uv@v5
-        with:
-            enable-cache: true
-
-      - name: Set up Python runtime
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: pyproject.toml
-
-      - name: Install dependencies
-        run: uv sync --all-groups
+      - name: Setup project
+        uses: ./.github/actions/setup-project
 
       - name: Run Ruff linter
         run: uv run ruff check
@@ -31,48 +21,86 @@ jobs:
       - name: Check code formatting
         run: uv run ruff format --check
 
-
-  release:
-    name: Release
+  build:
     runs-on: ubuntu-latest
-    needs: code-quality
-    environment:
-      name: pypi
-      url: https://pypi.org/p/charlabs-logging
     permissions:
-      id-token: write
-      contents: write
-    if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
-
+      contents: read
+    env:
+      dist_artifacts_name: dist
+      dist_artifacts_dir: dist
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch full git history for semantic-release
 
-      - name: Install uv package manager
-        uses: astral-sh/setup-uv@v5
-        with:
-          enable-cache: true
+      - name: Setup project
+        uses: ./.github/actions/setup-project
 
-      - name: Set up Python runtime
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: pyproject.toml
-
-      - name: Install dependencies
-        run: uv sync --all-groups
-
-      - name: Create release
-        run: |
-          uv run semantic-release --strict version
-          uv run semantic-release publish
+      - name: Build
+        id: version
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+          GH_TOKEN: "none"
+        run: uv run semantic-release -v version --no-commit --no-tag
 
+      - name: Upload | Distribution Artifacts
+        if: ${{ steps.version.outputs.released == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.dist_artifacts_name }}
+          path: ${{ format('{0}/**', env.dist_artifacts_dir) }}
+          if-no-files-found: error
+          retention-days: 2
+
+    outputs:
+      new-release-detected: ${{ steps.version.outputs.released }}
+      new-release-version: ${{ steps.version.outputs.version }}
+      new-release-tag: ${{ steps.version.outputs.tag }}
+      new-release-is-prerelease: ${{ steps.version.outputs.is_prerelease }}
+      distribution-artifacts: ${{ env.dist_artifacts_name }}
+
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - code-quality
+      - build
+    if: ${{ needs.build.outputs.new-release-detected == 'true' && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' }}
+    environment:
+      name: pypi
+      url: https://pypi.org/p/charlabs-logging
+    concurrency:
+      group: ${{ github.workflow }}-release-${{ github.ref_name }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full git history for semantic-release
+
+      - name: Setup project
+        uses: ./.github/actions/setup-project
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        id: artifact-download
+        with:
+          name: ${{ needs.build.outputs.distribution-artifacts }}
+          path: dist
+      - name: Release
+        id: release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          uv run semantic-release -v --strict version --skip-build
+          uv run semantic-release publish
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc  # v1.12.4
+        env:
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           packages-dir: dist
           print-hash: true
