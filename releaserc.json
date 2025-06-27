@@ -77,8 +77,8 @@
         },
         "logging_use_named_masks": false,
         "major_on_zero": false,
-        "allow_zero_version": false,
-        "repo_dir": "/Users/charlesfrancois.stcyr/Development/charlabs_pylib_logging",
+        "allow_zero_version": true,
+        "repo_dir": ".",
         "remote": {
             "name": "origin",
             "type": "github",
@@ -94,7 +94,7 @@
             "dist_glob_patterns": [
                 "dist/*"
             ],
-            "upload_to_vcs_release": true
+            "upload_to_vcs_release": false
         },
         "version_provider": "tag",
         "version_variables": ["src/charlabs/logging/__init__.py:__version__"]
