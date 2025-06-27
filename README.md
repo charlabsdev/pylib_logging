@@ -327,6 +327,7 @@ make format-fix
 make lint-fix
 ```
 
+
 ## API Reference
 
 ### LogsSettings Classes
