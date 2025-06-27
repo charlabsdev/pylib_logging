@@ -154,12 +154,12 @@ The Task Logger provides comprehensive task tracking with automatic timing, prog
 ```python
 from charlabs.logging import TaskLogger  # or from charlabs.logging.structlog
 
-# Context manager usage (recommended)
+# ✅ RECOMMENDED: Context manager usage
 with TaskLogger("data_processing") as task:
     # Your task logic here
     pass
 
-# Manual control
+# ✅ Alternative: Manual control
 task = TaskLogger("data_processing")
 task.start()
 try:
@@ -217,7 +217,7 @@ task = TaskLogger(
 ### Progress Update Modes
 
 - `TaskLoggerUpdate.INTERVAL`: Log progress only at time intervals (default)
-- `TaskLoggerUpdate.UPDATE`: Log progress on every `update()` call
+- `TaskLoggerUpdate.UPDATE`: Log progress on every `update()` call (including `iterate()`)
 - `TaskLoggerUpdate.ALL`: Log progress on both intervals and updates
 
 ### Best Practices
@@ -273,7 +273,7 @@ setup_logs(settings)
 # Now all uncaught exceptions will be logged to the "errors" logger
 ```
 
-## Cloud Provider Support
+## Cloud Provider Support (structlog only)
 
 ### Google Cloud Platform (GCP)
 
@@ -361,12 +361,3 @@ Sets up traditional logging from YAML configuration.
 
 #### `charlabs.logging.structlog.setup_logs(logs_settings: LogsSettings, *, is_dev: bool = False)`
 Sets up structured logging with structlog.
-
-## License
-
-[Add your license information here]
-
-## Contributing
-
-[Add contribution guidelines here]
-# Test feature
