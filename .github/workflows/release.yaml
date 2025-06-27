@@ -11,13 +11,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Setup project
         uses: ./.github/actions/setup-project
-
       - name: Run Ruff linter
         run: uv run ruff check
-
       - name: Check code formatting
         run: uv run ruff format --check
 
@@ -33,17 +30,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch full git history for semantic-release
-
       - name: Setup project
         uses: ./.github/actions/setup-project
-      - name: Echo release config
-        run: cat releaserc.toml
       - name: Build
         id: version
         env:
           GH_TOKEN: "none"
-        run: uv run semantic-release -v version --no-commit --no-tag
-
+        run: uv run semantic-release -c releaserc.toml -v version --no-commit --no-tag
       - name: Upload | Distribution Artifacts
         if: ${{ steps.version.outputs.released == 'true' }}
         uses: actions/upload-artifact@v4
@@ -79,10 +72,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch full git history for semantic-release
-
       - name: Setup project
         uses: ./.github/actions/setup-project
-
       - name: Download Build Artifacts
         uses: actions/download-artifact@v4
         id: artifact-download
@@ -95,8 +86,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          uv run semantic-release -v --strict version --skip-build
-          uv run semantic-release publish
+          uv run semantic-release -c releaserc.toml -v --strict version --skip-build
+          uv run semantic-release -c releaserc.toml publish
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc  # v1.12.4
         env:
