@@ -83,7 +83,10 @@
             "name": "origin",
             "type": "github",
             "ignore_token_for_push": false,
-            "insecure": false
+            "insecure": false,
+            "token": {
+                "env": "GITHUB_TOKEN"
+            }
         },
         "no_git_verify": false,
         "tag_format": "v{version}",
