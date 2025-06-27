@@ -1,4 +1,17 @@
-# Charlabs Python Logging Library
+<p align="center">
+    <a href="https://charlabs.dev"><img src="./assets/logo_h.webp" alt="CharLabs" style="max-width: 450px; width: calc(100% - 48px);" /></a>
+</p>
+
+<h1 style="border: none;" align="center">CharLabs PyLib Logging</h1>
+
+<p align="center">
+    <a href="#!"><img src="https://img.shields.io/github/commit-activity/m/charlabsdev/pylib_logging?logo=github" alt="Commit Activity" /></a>
+</p>
+
+<p align="center">
+    <a href="https://github.com/charlabsdev/pylib_logging/releases" alt="Github Release"><img src="https://img.shields.io/github/v/release/charlabsdev/pylib_logging?logo=github" /></a>
+    <a href="https://github.com/charlabsdev/pylib_logging/releases" alt="Github Release"><img src="https://img.shields.io/github/release-date/charlabsdev/pylib_logging?logo=github" /></a>
+</p>
 
 A comprehensive Python logging library that provides both traditional logging and structured logging (via structlog) with advanced task tracking capabilities.
 
